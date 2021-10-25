@@ -25,10 +25,9 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 if (childWindow.isOpen()) {
                     childWindow.close();
-                    ImGui::SFML::Shutdown(childWindow);
                 }
                 window.close();
-                ImGui::SFML::Shutdown(window);
+                ImGui::SFML::Shutdown(); // will shutdown all windows
                 return 0; // return here so that we don't call Update/Render
             }
         }
@@ -45,9 +44,10 @@ int main() {
         }
 
         // Update
-        ImGui::SFML::Update(window, deltaClock.restart());
+        const sf::Time dt = deltaClock.restart();
+        ImGui::SFML::Update(window, dt);
         if (childWindow.isOpen()) {
-            ImGui::SFML::Update(childWindow, deltaClock.restart());
+            ImGui::SFML::Update(childWindow, dt);
         }
 
         // Add ImGui widgets in the first window
