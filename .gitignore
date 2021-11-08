@@ -1,3 +1,5 @@
 Ignore folders named build
 build/**
 Build/**
+.idea/**
+cmake-build-*/**
