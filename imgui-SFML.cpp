@@ -756,8 +756,8 @@ void SetupRenderState(ImDrawData* draw_data, int fb_width, int fb_height) {
 
 // Rendering callback
 void RenderDrawLists(ImDrawData* draw_data) {
-    ImGui::GetDrawData();
-    if (draw_data->CmdListsCount == 0) {
+    //ImGui::GetDrawData();
+    if (!draw_data || draw_data->CmdListsCount == 0) {
         return;
     }
 
